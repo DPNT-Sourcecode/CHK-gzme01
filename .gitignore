@@ -1,0 +1,8 @@
+.idea
+challenges/*.txt
+record/localstore
+config/credentials.config
+*.pyc
+.DS_Store
+venv
+.vscode
