@@ -56,10 +56,9 @@ def calculate_multibuy_discounts(product_count):
 
     for product in DISCOUNT_MULTIBUY.keys():
         for discount in DISCOUNT_MULTIBUY[product]:
-            if product == "A":
-                print(product_count[product])
             total_discounts += (product_count[product] / discount["n"]) * discount["value"]
-            product_count[product] = product_count - discount["n"]
+            if product_count[product] >= discount["n"]:
+                product_count[product] = product_count[product] - discount["n"]
 
     return total_discounts
 
