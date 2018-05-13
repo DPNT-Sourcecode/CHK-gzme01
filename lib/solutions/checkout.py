@@ -111,6 +111,27 @@ FREE_ITEM_MULTIBUY = {
             "free_count": 1,
             "free_product": "F"
         }
+    ],
+    "N": [
+        {
+            "n": 3,
+            "free_count": 1,
+            "free_product": "M"
+        }
+    ],
+    "R": [
+        {
+            "n": 3,
+            "free_count": 1,
+            "free_product": "Q"
+        }
+    ],
+    "U": [
+        {
+            "n": 3,
+            "free_count": 1,
+            "free_product": "U"
+        }
     ]
 }
 

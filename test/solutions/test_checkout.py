@@ -55,3 +55,7 @@ class CheckoutTestCase(TestCase):
 
     def test_illegal_input(self):
         self.assertEqual(checkout("a"), -1)
+
+    # Would like to write more tests for the various combinations of products.
+    # This is reasonably time consuming.
+    # I wouldn't depoy production code like this. But under the time constraints I'm under in the challenge environment.
