@@ -21,20 +21,20 @@ PRODUCT_PRICES = {
 # The list is ordered so the offers can be applied in order.
 # Larger discounts first.
 DISCOUNT_MULTIBUY = {
-    # "A": [
-    #     {
-    #         "n": 5,
-    #         "discount": 50
-    #     },
-    #     {
-    #         "n": 3,
-    #         "discount": 20
-    #     }
-    # ],
+    "A": [
+        {
+            "n": 5,
+            "value": 50
+        },
+        {
+            "n": 3,
+            "value": 20
+        }
+    ],
     "B": [
         {
             "n": 2,
-            "discount": 15
+            "value": 15
         }
     ]
 }
@@ -50,17 +50,13 @@ def remove_free_products(product_count):
     return product_count
 
 
-def calculate_discounts(product_count):
+# Here we calculate the discount due to multibuys
+def calculate_multibuy_discounts(product_count):
     total_discounts = 0
-    # Here we calculate the discount due to multibuys
-    remainder_A = product_count["A"] % 5
-    total_discounts += ((product_count["A"] / 5) * 50)
-    total_discounts += ((remainder_A / 3) * 20)
 
     for product in DISCOUNT_MULTIBUY.keys():
-        print("--------------->>>>>>>>>>>>>---------------")
-        print(product_count[product])
-        print("---------------<<<<<<<<<<<<<---------------")
+        for discount in DISCOUNT_MULTIBUY[product]:
+            total_discounts += product_count[product] / discount["n"] * discount["value"]
 
     return total_discounts
 
@@ -88,6 +84,6 @@ def checkout(skus):
     for product_sku, count in product_count.items():
         total_price += count * PRODUCT_PRICES[product_sku]
 
-    discounts = calculate_discounts(product_count)
+    discounts = calculate_multibuy_discounts(product_count)
 
     return total_price - discounts
