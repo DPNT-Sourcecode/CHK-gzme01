@@ -15,10 +15,11 @@ PRODUCT_PRICES = {
 
 def calculate_price(sku, count):
     if (sku == "A"):
-        print(count/3)
-        return count * PRODUCT_PRICES[sku]
+        # leftovers plus multibuys
+        # Here we see how we could generalise the multibuy concept
+        return ((count % 3) * PRODUCT_PRICES[sku]) + ((count / 3) * 130)
     elif (sku == "B"):
-        return count * PRODUCT_PRICES[sku]
+        return ((count % 2) * PRODUCT_PRICES[sku]) + ((count / 2) * 45)
     else:
         return count * PRODUCT_PRICES[sku]
 
@@ -38,3 +39,6 @@ def checkout(skus):
         total_price += calculate_price(product_sku, count)
 
     return total_price
+
+
+# Now we find out if the SKUs arrive as a simple string.
