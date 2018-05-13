@@ -18,6 +18,10 @@ def calculate_price(sku, count):
     if (sku == "A"):
         # leftovers plus multibuys
         # Here we see how we could generalise the multibuy concept
+        # We could go in stages. remainder = mod 5
+        # then move on again.
+        p
+        remainder = count % 5
         return ((count % 3) * PRODUCT_PRICES[sku]) + ((count / 3) * 130)
     elif (sku == "B"):
         return ((count % 2) * PRODUCT_PRICES[sku]) + ((count / 2) * 45)
