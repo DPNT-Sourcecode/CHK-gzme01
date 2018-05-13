@@ -3,6 +3,9 @@ from lib.scrape_prices import PRODUCT_PRICES
 # I feel like I should have written a parser for the format I was given right at the beginning.
 # Maybe if I'd have implemented the previous two challenges like this. I would have had the time to finish.
 
+# I feel like the 2 hours wasn't a hard limit and am regretting sending the last round untested.
+# The final round shall hence be properly tested.
+
 # noinspection PyUnusedLocal
 # skus = unicode string
 
