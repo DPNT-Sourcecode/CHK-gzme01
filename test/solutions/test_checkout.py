@@ -49,7 +49,7 @@ class CheckoutTestCase(TestCase):
         # We need to test that we don't get more than the number of B that are in the checkout
         self.assertEqual(checkout("EEB"), 40 + 40)
         self.assertEqual(checkout("EE"), 40 + 40)
-        self.assertEqual(checkout("EEEEEEB"), 40 * 6 - 30)
+        self.assertEqual(checkout("EEEEEEB"), 40 * 6)
         self.assertEqual(checkout("EEBB"), 40 + 40 + 30)
         self.assertEqual(checkout("EE B BBB"), 40 + 40 + 45 + 30)
 
