@@ -8,6 +8,3 @@ class HelloFriendTestCase(TestCase):
     def test_hello(self):
         self.assertEqual(hello("John"), "Hello, John!")
         self.assertEqual(hello(""), "Hello, !")
-
-    def test_running(self):
-        self.assertEqual(True, False)
