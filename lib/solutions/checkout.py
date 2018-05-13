@@ -13,6 +13,33 @@ PRODUCT_PRICES = {
 # skus = unicode string
 
 
+# As expected we need to move to a better model of managing the stores products
+# and of implementing their offers.
+
+# This is a list of products that do have discount offers
+# The attached list is a representation of the offer
+# The list is ordered so the offers can be applied in order.
+# Larger discounts first.
+DISCOUNT_MULTIBUY = {
+    # "A": [
+    #     {
+    #         "n": 5,
+    #         "discount": 50
+    #     },
+    #     {
+    #         "n": 3,
+    #         "discount": 20
+    #     }
+    # ],
+    "B": [
+        {
+            "n": 2,
+            "discount": 15
+        }
+    ]
+}
+
+
 # This function figures out if any products have been made free through the pricing system
 # It then removes them from the product count dictionary.
 def remove_free_products(product_count):
@@ -30,7 +57,10 @@ def calculate_discounts(product_count):
     total_discounts += ((product_count["A"] / 5) * 50)
     total_discounts += ((remainder_A / 3) * 20)
 
-    total_discounts += ((product_count["B"] / 2) * 15)
+    for product in DISCOUNT_MULTIBUY.keys():
+        print("--------------->>>>>>>>>>>>>---------------")
+        print(product_count[product])
+        print("---------------<<<<<<<<<<<<<---------------")
 
     return total_discounts
 
