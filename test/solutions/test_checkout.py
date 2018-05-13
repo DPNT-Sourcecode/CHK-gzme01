@@ -16,12 +16,12 @@ class CheckoutTestCase(TestCase):
         self.assertEqual(checkout("ABC"), 50 + 30 + 20)
         self.assertEqual(checkout("ABD"), 50 + 30 + 15)
 
-    # def test_pricing_multi_A(self):
-    #     self.assertEqual(checkout("AAA"), 130)
-    #     self.assertEqual(checkout("AABA"), 130 + 30)
-    #     self.assertEqual(checkout("BACDAA"), 130 + 30 + 20 + 15)
+    def test_pricing_multi_A(self):
+        self.assertEqual(checkout("AAA"), 130)
+        self.assertEqual(checkout("AABA"), 130 + 30)
+        self.assertEqual(checkout("BACDAA"), 130 + 30 + 20 + 15)
 
-    # def test_pricing_multi_B(self):
-    #     self.assertEqual(checkout("BB"), 45)
-    #     self.assertEqual(checkout("BBAD"), 45 + 50 + 15)
-    #     self.assertEqual(checkout("BBAADA"), 45 + 130 + 15)
+    def test_pricing_multi_B(self):
+        self.assertEqual(checkout("BB"), 45)
+        self.assertEqual(checkout("BBAD"), 45 + 50 + 15)
+        self.assertEqual(checkout("BBAADA"), 45 + 130 + 15)
