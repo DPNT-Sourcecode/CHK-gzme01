@@ -14,15 +14,19 @@ PRODUCT_PRICES = {
 # Not necessarily the best way of doing this
 
 
-def calculate_price(sku, count):
+def price_for_product(sku, count):
     if (sku == "A"):
         # leftovers plus multibuys
         # Here we see how we could generalise the multibuy concept
         # We could go in stages. remainder = mod 5
         # then move on again.
-        p
+        # This model doesn't extend to other offer types.
+        price = 0
         remainder = count % 5
-        return ((count % 3) * PRODUCT_PRICES[sku]) + ((count / 3) * 130)
+        price += ((count / 5) * 200)
+        price += ((remainder / 3) * 130)
+        price += ((remainder % 3) * PRODUCT_PRICES[sku])
+        return price
     elif (sku == "B"):
         return ((count % 2) * PRODUCT_PRICES[sku]) + ((count / 2) * 45)
     else:
@@ -44,7 +48,7 @@ def checkout(skus):
 
     total_price = 0
     for product_sku, count in product_count.items():
-        total_price += calculate_price(product_sku, count)
+        total_price += price_for_product(product_sku, count)
 
     return total_price
 
