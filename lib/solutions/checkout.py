@@ -82,6 +82,12 @@ DISCOUNT_MULTIBUY = {
             "value": 50
         }
     ],
+    "Q": [
+        {
+            "n": 3,
+            "value": 10
+        }
+    ],
     "V": [
         {
             "n": 3,
@@ -96,6 +102,8 @@ DISCOUNT_MULTIBUY = {
 
 # It's going to take a while to write in all the correct products here.
 # Going to make the free products model work first.
+
+# Didn't notice the misunderstanding in the implementation.
 
 FREE_ITEM_MULTIBUY = {
     "E": [
@@ -128,7 +136,7 @@ FREE_ITEM_MULTIBUY = {
     ],
     "U": [
         {
-            "n": 3,
+            "n": 4,
             "free_count": 1,
             "free_product": "U"
         }
