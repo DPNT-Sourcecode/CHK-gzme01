@@ -10,6 +10,18 @@ PRODUCT_PRICES = {
 # noinspection PyUnusedLocal
 # skus = unicode string
 
+# Not necessarily the best way of doing this
+
+
+def calculate_price(sku, count):
+    if (sku == "A"):
+        print(count/3)
+        return count * PRODUCT_PRICES[sku]
+    elif (sku == "B"):
+        return count * PRODUCT_PRICES[sku]
+    else:
+        return count * PRODUCT_PRICES[sku]
+
 
 def checkout(skus):
     product_count = {
@@ -22,7 +34,7 @@ def checkout(skus):
         product_count[product] += 1
 
     total_price = 0
-    for product, count in product_count.items():
-        total_price += count * PRODUCT_PRICES[product]
+    for product_sku, count in product_count.items():
+        total_price += calculate_price(product_sku, count)
 
     return total_price
