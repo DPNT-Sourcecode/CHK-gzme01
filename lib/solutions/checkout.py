@@ -14,6 +14,10 @@ PRODUCT_PRICES = {
 # Not necessarily the best way of doing this
 
 
+def calculate_discounts(product_count):
+    return 0
+
+
 def price_for_product(sku, count):
     if (sku == "A"):
         # leftovers plus multibuys
@@ -21,6 +25,7 @@ def price_for_product(sku, count):
         # We could go in stages. remainder = mod 5
         # then move on again.
         # This model doesn't extend to other offer types.
+        # and does not accomodate further multibuys.
         price = 0
         remainder = count % 5
         price += ((count / 5) * 200)
@@ -50,7 +55,9 @@ def checkout(skus):
     for product_sku, count in product_count.items():
         total_price += price_for_product(product_sku, count)
 
-    return total_price
+    discounts = calculate_discounts(product_count)
+
+    return total_price - discounts
 
 
 # Now we find out if the SKUs arrive as a simple string.
