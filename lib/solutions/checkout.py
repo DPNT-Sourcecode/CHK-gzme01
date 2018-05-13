@@ -53,6 +53,3 @@ def checkout(skus):
     discounts = calculate_discounts(product_count)
 
     return total_price - discounts
-
-
-# Now we find out if the SKUs arrive as a simple string.
