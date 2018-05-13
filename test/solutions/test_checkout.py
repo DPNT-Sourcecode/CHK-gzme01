@@ -46,12 +46,12 @@ class CheckoutTestCase(TestCase):
         self.assertEqual(checkout("EEBB"), 40 + 40 + 30)
         self.assertEqual(checkout("EEBBBB"), 40 + 40 + 45 + 30)
 
-    # def test_free_F(self):
-    #     self.assertEqual(checkout("FFF"), 10 + 10 + 10 - 10)
-    #     self.assertEqual(checkout("FF"), 10 + 10)
-    #     self.assertEqual(checkout("FFFF"), 40 - 10)
-    #     self.assertEqual(checkout("FFFFFF"), 60 - 20)
-    #     self.assertEqual(checkout("AABDFFFF"), 50 + 50 + 30 + 15 + 40 - 10)
+    def test_free_F(self):
+        self.assertEqual(checkout("FFF"), 10 + 10 + 10 - 10)
+        self.assertEqual(checkout("FF"), 10 + 10)
+        self.assertEqual(checkout("FFFF"), 40 - 10)
+        self.assertEqual(checkout("FFFFFF"), 60 - 20)
+        self.assertEqual(checkout("AABDFFFF"), 50 + 50 + 30 + 15 + 40 - 10)
 
     def test_illegal_input(self):
         self.assertEqual(checkout("a"), -1)

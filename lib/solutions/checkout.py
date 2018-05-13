@@ -39,14 +39,38 @@ DISCOUNT_MULTIBUY = {
     ]
 }
 
+# It's going to take a while to write in all the correct products here.
+# Going to make the free products model work first.
+
+FREE_ITEM_MULTIBUY = {
+    # "E": [
+    #     {
+    #         "n": 2,
+    #         "free_count": 1,
+    #         "free_product": "B"
+    #     }
+    # ],
+    "F": [
+        {
+            "n": 2,
+            "free_count": 1,
+            "free_product": "F"
+        }
+    ]
+}
+
 
 # This function figures out if any products have been made free through the pricing system
 # It then removes them from the product count dictionary.
 def remove_free_products(product_count):
-    number_E_B_discounts = product_count["E"] / 2
-    product_count["B"] = product_count["B"] - min(number_E_B_discounts, product_count["B"])
-    number_F_made_free = product_count["F"] / 3
-    product_count["F"] = product_count["F"] - number_F_made_free
+    for product in FREE_ITEM_MULTIBUY.keys():
+        for multibuy in FREE_ITEM_MULTIBUY[product]:
+            number_made_free = min(product_count[product] / 3, product_count[multibuy["free_product"]])
+            product_count[multibuy["free_product"]] -= - number_made_free
+    # number_E_B_discounts = product_count["E"] / 2
+    # product_count["B"] = product_count["B"] - min(number_E_B_discounts, product_count["B"])
+    # number_F_made_free = product_count["F"] / 3
+    # product_count["F"] = product_count["F"] - number_F_made_free
     return product_count
 
 
