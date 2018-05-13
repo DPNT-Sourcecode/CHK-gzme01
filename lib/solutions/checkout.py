@@ -42,8 +42,14 @@ def calculate_discounts(product_count):
 
 
 def checkout(skus):
-    product_count = {0 for key in PRODUCT_PRICES.keys()}
-
+    product_count = {
+        "A": 0,
+        "B": 0,
+        "C": 0,
+        "D": 0,
+        "E": 0,
+        "F": 0
+    }
     for product in skus:
         if product not in PRODUCT_PRICES.keys():
             return -1
