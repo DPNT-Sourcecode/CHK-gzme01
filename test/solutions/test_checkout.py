@@ -51,7 +51,7 @@ class CheckoutTestCase(TestCase):
         self.assertEqual(checkout("EE"), 40 + 40)
         self.assertEqual(checkout("EEEEEEB"), 40 * 6)
         self.assertEqual(checkout("EEBB"), 40 + 40 + 30)
-        self.assertEqual(checkout("EE B BBB"), 40 + 40 + 45 + 30)
+        self.assertEqual(checkout("EEBBBB"), 40 + 40 + 45 + 30)
 
     def test_illegal_input(self):
         self.assertEqual(checkout("a"), -1)

@@ -12,6 +12,8 @@ PRODUCT_PRICES = {
 # skus = unicode string
 
 # Not necessarily the best way of doing this
+# We need to generate some model of how to apply discounts
+# or remove items from the cart.
 
 
 def calculate_discounts(product_count):
@@ -20,11 +22,13 @@ def calculate_discounts(product_count):
     number_E_B_discounts = product_count["E"] / 2
     total_discounts += min(number_E_B_discounts, product_count["B"]) * PRODUCT_PRICES["B"]
 
+    product_count["B"] = product_count["B"] - min(number_E_B_discounts, product_count["B"])
+
     remainder_A = product_count["A"] % 5
     total_discounts += ((product_count["A"] / 5) * 50)
     total_discounts += ((remainder_A / 3) * 20)
 
-    total_discounts += (product_count["B"] * 15)
+    total_discounts += ((product_count["B"] / 2) * 15)
 
     return total_discounts
 
