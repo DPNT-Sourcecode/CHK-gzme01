@@ -32,6 +32,8 @@ def checkout(skus):
         "D": 0
     }
     for product in skus:
+        if product not in PRODUCT_PRICES.keys():
+            return -1
         product_count[product] += 1
 
     total_price = 0
