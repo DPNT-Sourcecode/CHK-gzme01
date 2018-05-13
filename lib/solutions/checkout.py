@@ -23,7 +23,10 @@ PRODUCT_PRICES = {
     "T": 20,
     "U": 40,
     "V": 50,
-    "W": 20
+    "W": 20,
+    "X": 90,
+    "Y": 10,
+    "Z": 50
 }
 
 # I feel like I should have written a parser for the format I was given right at the beginning.
@@ -68,6 +71,22 @@ DISCOUNT_MULTIBUY = {
         }
     ],
     "K": [
+        {
+            "n": 2,
+            "value": 10
+        }
+    ],
+    "P": [
+        {
+            "n": 5,
+            "value": 50
+        }
+    ],
+    "V": [
+        {
+            "n": 3,
+            "value": 20
+        },
         {
             "n": 2,
             "value": 10
