@@ -27,11 +27,4 @@ price_list = """| A    | 50    | 3A for 130, 5A for 200          |
 | Y    | 20    | buy any 3 of (S,T,X,Y,Z) for 45 |
 | Z    | 21    | buy any 3 of (S,T,X,Y,Z) for 45 |"""
 
-
-print("--------------->>>>>>>>>>>>>---------------")
-print(json.dumps(price_list.splitlines(), indent=4))
-print("---------------<<<<<<<<<<<<<---------------")
-
-
-for line in price_list.splitlines():
-    print(line[2], line[9:11])
+PRODUCT_PRICES = {line[2]: int(line[9:11]) for line in price_list.splitlines()}

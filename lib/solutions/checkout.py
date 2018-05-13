@@ -1,33 +1,4 @@
-
-
-PRODUCT_PRICES = {
-    "A": 50,
-    "B": 30,
-    "C": 20,
-    "D": 15,
-    "E": 40,
-    "F": 10,
-    "G": 20,
-    "H": 10,
-    "I": 35,
-    "J": 60,
-    "K": 80,
-    "L": 90,
-    "M": 15,
-    "N": 40,
-    "O": 10,
-    "P": 50,
-    "Q": 30,
-    "R": 50,
-    "S": 30,
-    "T": 20,
-    "U": 40,
-    "V": 50,
-    "W": 20,
-    "X": 90,
-    "Y": 10,
-    "Z": 50
-}
+from lib.scrape_prices import PRODUCT_PRICES
 
 # I feel like I should have written a parser for the format I was given right at the beginning.
 # Maybe if I'd have implemented the previous two challenges like this. I would have had the time to finish.
