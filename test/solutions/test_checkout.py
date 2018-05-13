@@ -5,7 +5,7 @@ from lib.solutions.checkout import checkout
 
 class CheckoutTestCase(TestCase):
 
-    #     Our price table and offers:
+    # Our price table and offers:
     # +------+-------+------------------------+
     # | Item | Price | Special offers         |
     # +------+-------+------------------------+
@@ -14,18 +14,10 @@ class CheckoutTestCase(TestCase):
     # | C    | 20    |                        |
     # | D    | 15    |                        |
     # | E    | 40    | 2E get one B free      |
+    # | F    | 10    | 2F get one F free      |
     # +------+-------+------------------------+
 
-    # The total value of the price of the B type products
-    # is now dependent on the total number of E type products purchased.
-    # We _COULD_ apply deductions at the end of the calculations.
-
-    # For every 3 A type products apply a cash reduction of 20.
-    # For every 5 A type products apply a cash deduction of 50. The larger deduction takes
-    # priority.
-
-    # For every 2 E type products apply a deduction of 30 upto to the total count of the B
-    # type products.
+    # The introduction of this offer does not change our code too much
 
     def test_pricing_simple(self):
         self.assertEqual(checkout("ABC"), 50 + 30 + 20)
@@ -52,6 +44,11 @@ class CheckoutTestCase(TestCase):
         self.assertEqual(checkout("EEEEEEB"), 40 * 6)
         self.assertEqual(checkout("EEBB"), 40 + 40 + 30)
         self.assertEqual(checkout("EEBBBB"), 40 + 40 + 45 + 30)
+
+    def test_free_F(self):
+        self.assertEqual(checkout("FFF"), 20)
+        self.assertEqual(checkout("FF"), 20)
+        self.assertEqual(checkout("FFFF"), 30)
 
     def test_illegal_input(self):
         self.assertEqual(checkout("a"), -1)
