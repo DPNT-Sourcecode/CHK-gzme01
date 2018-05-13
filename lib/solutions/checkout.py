@@ -16,7 +16,11 @@ PRODUCT_PRICES = {
 
 def calculate_discounts(product_count):
     number_discounts = product_count["E"] / 2
-    return number_discounts * product_count["B"] * PRODUCT_PRICES["B"]
+    print("--------------->>>>>>>>>>>>>---------------")
+    print(min(number_discounts, product_count["B"]))
+    print("---------------<<<<<<<<<<<<<---------------")
+    print(number_discounts, product_count["B"])
+    return min(number_discounts, product_count["B"]) * PRODUCT_PRICES["B"]
 
 
 def price_for_product(sku, count):
