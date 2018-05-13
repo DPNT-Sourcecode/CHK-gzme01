@@ -15,32 +15,18 @@ PRODUCT_PRICES = {
 
 
 def calculate_discounts(product_count):
-    number_discounts = product_count["E"] / 2
-    print("--------------->>>>>>>>>>>>>---------------")
-    print(min(number_discounts, product_count["B"]))
-    print("---------------<<<<<<<<<<<<<---------------")
-    print(number_discounts, product_count["B"])
-    return min(number_discounts, product_count["B"]) * PRODUCT_PRICES["B"]
 
+    total_discounts = 0
+    number_E_B_discounts = product_count["E"] / 2
+    total_discounts += min(number_E_B_discounts, product_count["B"]) * PRODUCT_PRICES["B"]
 
-def price_for_product(sku, count):
-    if (sku == "A"):
-        # leftovers plus multibuys
-        # Here we see how we could generalise the multibuy concept
-        # We could go in stages. remainder = mod 5
-        # then move on again.
-        # This model doesn't extend to other offer types.
-        # and does not accomodate further multibuys.
-        price = 0
-        remainder = count % 5
-        price += ((count / 5) * 200)
-        price += ((remainder / 3) * 130)
-        price += ((remainder % 3) * PRODUCT_PRICES[sku])
-        return price
-    elif (sku == "B"):
-        return ((count % 2) * PRODUCT_PRICES[sku]) + ((count / 2) * 45)
-    else:
-        return count * PRODUCT_PRICES[sku]
+    remainder_A = product_count["A"] % 5
+    total_discounts += ((product_count["A"] / 5) * 50)
+    total_discounts += ((remainder_A / 3) * 20)
+
+    total_discounts += (product_count["B"] * 15)
+
+    return total_discounts
 
 
 def checkout(skus):
@@ -58,7 +44,7 @@ def checkout(skus):
 
     total_price = 0
     for product_sku, count in product_count.items():
-        total_price += price_for_product(product_sku, count)
+        total_price += count * PRODUCT_PRICES[product_sku]
 
     discounts = calculate_discounts(product_count)
 
