@@ -23,6 +23,7 @@ class CheckoutTestCase(TestCase):
         self.assertEqual(checkout("ABC"), 50 + 30 + 20)
         self.assertEqual(checkout("ABD"), 50 + 30 + 15)
         self.assertEqual(checkout("EAD"), 40 + 50 + 15)
+        self.assertEqual
 
     def test_pricing_multi_A(self):
         self.assertEqual(checkout("AAA"), 130)
@@ -46,10 +47,11 @@ class CheckoutTestCase(TestCase):
         self.assertEqual(checkout("EEBBBB"), 40 + 40 + 45 + 30)
 
     def test_free_F(self):
-        self.assertEqual(checkout("FFF"), 20)
-        self.assertEqual(checkout("FF"), 20)
-        self.assertEqual(checkout("FFFF"), 30)
-        self.assertEqual(checkout("FFFFFF"), 40)
+        self.assertEqual(checkout("FFF"), 10 + 10 + 10 - 10)
+        self.assertEqual(checkout("FF"), 10 + 10)
+        self.assertEqual(checkout("FFFF"), 40 - 10)
+        self.assertEqual(checkout("FFFFFF"), 60 - 20)
+        self.assertEqual(checkout("AABDFFFF"), 50 + 50 + 30 + 15 + 40 - 10)
 
     def test_illegal_input(self):
         self.assertEqual(checkout("a"), -1)

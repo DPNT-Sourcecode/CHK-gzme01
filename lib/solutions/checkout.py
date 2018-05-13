@@ -12,25 +12,19 @@ PRODUCT_PRICES = {
 # noinspection PyUnusedLocal
 # skus = unicode string
 
-# Not necessarily the best way of doing this
-# We need to generate some model of how to apply discounts
-# or remove items from the cart.
+
+# This function figures out if any products have been made free through the pricing system
+# It then removes them from the product count dictionary.
+def remove_free_products(product_count):
+    number_E_B_discounts = product_count["E"] / 2
+    product_count["B"] = product_count["B"] - min(number_E_B_discounts, product_count["B"])
+    number_F_made_free = product_count["F"] / 3
+    product_count["F"] = product_count["F"] - number_F_made_free
+    return product_count
 
 
-# This function has become somewhat disingenuous in its naming
 def calculate_discounts(product_count):
     total_discounts = 0
-
-    # Here we remove any free products from the basket.
-    # This could be made into a function before the calculation of discounts
-    # This means we wouldn't have to
-    # We calculate the number of available discounts
-    number_E_B_discounts = product_count["E"] / 2
-    # Then calculate the total value of the E-B discount.
-    total_discounts += min(number_E_B_discounts, product_count["B"]) * PRODUCT_PRICES["B"]
-    # Remove the free products from the basket.
-    product_count["B"] = product_count["B"] - min(number_E_B_discounts, product_count["B"])
-
     # Here we calculate the discount due to multibuys
     remainder_A = product_count["A"] % 5
     total_discounts += ((product_count["A"] / 5) * 50)
@@ -41,6 +35,9 @@ def calculate_discounts(product_count):
     return total_discounts
 
 
+# We could obviously have a different implementation if we needed
+# to generate a receipt for the customer. But that isn't the aim of
+# this function.
 def checkout(skus):
     product_count = {
         "A": 0,
@@ -54,6 +51,8 @@ def checkout(skus):
         if product not in PRODUCT_PRICES.keys():
             return -1
         product_count[product] += 1
+
+    product_count = remove_free_products(product_count)
 
     total_price = 0
     for product_sku, count in product_count.items():
