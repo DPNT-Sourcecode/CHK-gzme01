@@ -6,7 +6,9 @@ PRODUCT_PRICES = {
     "C": 20,
     "D": 15,
     "E": 40,
-    "F": 10
+    "F": 10,
+    "G": 20,
+    "H": 10
 }
 
 # noinspection PyUnusedLocal
@@ -35,6 +37,16 @@ DISCOUNT_MULTIBUY = {
         {
             "n": 2,
             "value": 15
+        }
+    ],
+    "H": [
+        {
+            "n": 10,
+            "value": 20
+        },
+        {
+            "n": 5,
+            "value": 5
         }
     ]
 }
@@ -88,14 +100,7 @@ def calculate_multibuy_discounts(product_count):
 # to generate a receipt for the customer. But that isn't the aim of
 # this function.
 def checkout(skus):
-    product_count = {
-        "A": 0,
-        "B": 0,
-        "C": 0,
-        "D": 0,
-        "E": 0,
-        "F": 0
-    }
+    product_count = {key: 0 for (key, value) in PRODUCT_PRICES.items()}
     for product in skus:
         if product not in PRODUCT_PRICES.keys():
             return -1
